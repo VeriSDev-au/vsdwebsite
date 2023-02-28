@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block Content %}
+
+<main id="main" class="main">
+  <div hx-get="{% url 'vsd-admin-clear' %}"
+  hx-trigger="load delay:3s">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      A simple success alert—check it out!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div> 
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="{% static 'img/profile-img.jpg'%}" alt="Profile" class="rounded-circle">
+              <h2>{{ form.name.value }}</h2>
+              <h3>{{ form.job.value }}</h3>
+              <div class="social-links mt-2">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Header Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                </li>
+
+              </ul>
+              <!-- End Bordered Header Tabs -->
+
+              <!-- End Bordered Detail Tabs -->
+              <div class="tab-content pt-2">
+
+                <!-- Detail Overview Tab -->
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">Profile Details</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                    <div class="col-lg-9 col-md-8">{{ form.name.value }}</div>
+                  </div>
+
+                  {% if object.company %}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Company</div>
+                    <div class="col-lg-9 col-md-8">{{ form.company.value }}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if object.job %}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Job</div>
+                    <div class="col-lg-9 col-md-8">{{ form.job.value }}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if object.country %}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Country</div>
+                    <div class="col-lg-9 col-md-8">{{ form.country.value }}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if object.address %}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Address</div>
+                    <div class="col-lg-9 col-md-8">{{ form.address.value }}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if object.mobile %}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Mobile No</div>
+                    <div class="col-lg-9 col-md-8">{{ form.mobile.value }}</div>
+                  </div>
+                  {% endif %}
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">{{ form.email.value }}</div>
+                  </div>
+
+                </div>
+                <!-- End Detail Overview Tab -->
+
+                <!-- Detail Profile Edit -->
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                  <!-- Profile Edit Form -->
+                  <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                      <div class="col-md-8 col-lg-9">
+                        <img src="{% static 'img/profile-img.jpg'%}" alt="Profile">
+                        <div class="pt-2">
+                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        {% render_field form.name class='form-control' %}
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                      <div class="col-md-8 col-lg-9">
+                        {% render_field form.company class='form-control' placeholder='Your Company' %}
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                      <div class="col-md-8 col-lg-9">
+                        {% render_field form.job class='form-control' placeholder='Your Job' %}
+                      </div>
+                    </div>                    
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        {% render_field form.email class='form-control' %}
+                      </div>
+                    </div>
+
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+                <!-- End Detail Profile Edit -->
+
+                <!-- Detail Change Password Form -->
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form method="POST" action="/user-password/{{ pk }}">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                      <label for="old_password" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="old_password" type="password" class="form-control" id="currentPassword" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" >
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="new_password1" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="new_password1" type="password" class="form-control" id="newPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="new_password2" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="new_password2" type="password" class="form-control" id="renewPassword">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
+                </div>
+                <!-- End Detail Change Password Form -->
+
+              </div>
+              <!-- End Bordered Detail Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+</main>
+
+{% endblock Content %}
