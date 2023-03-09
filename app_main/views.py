@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from app_blog.models import BlogPost
 import requests
 import json
-
+from decouple import config
 
 # Create your views here.
 def home(request):
@@ -16,7 +16,7 @@ class HomeDashboard(TemplateView):
     gh_api_allrepo = "https://api.github.com/user/repos"
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer " + config("GITHUB_TOKEN"),
         "X-GitHub-Api-Version": "2022-11-28",
     }
     response = requests.get(gh_api_allrepo, headers=headers)
