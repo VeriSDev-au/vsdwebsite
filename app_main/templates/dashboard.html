@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Content %}
+{% load utils %}
+
+<main id="main" class="main">
+
+    <section class="section dashboard">
+        <div class="row">
+  
+          <!-- Left side columns -->
+          <div class="col-lg-8">
+            <div class="row">
+  
+              <!-- GitHub Public Repository -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
+  
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>More</h6>
+                      </li>
+  
+                      <li><a class="dropdown-item" href="https://github.com/VeriSDev-au?tab=repositories">Open Public GitHub Repository</a></li>
+                    </ul>
+                  </div>
+  
+                  <div class="card-body">
+                    <h5 class="card-title">GitHub Public Repo</h5>
+  
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-github"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{ ghpubrep }}</h6>
+                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div><!-- End Sales Card -->
+  
+              <!-- Revenue Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card revenue-card">
+  
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>More</h6>
+                      </li>
+  
+                      <li><a class="dropdown-item" href="https://github.com/VeriSDev-au">Detail GitHub Activities</a></li>
+                    </ul>
+                  </div>
+  
+                  <div class="card-body">
+                    <h5 class="card-title">Total commits</span></h5>
+  
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-code-slash"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{ ghTotalCommits }}</h6>
+                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div><!-- End Revenue Card -->
+  
+              <!-- Middle Card -->
+              <div class="col-xxl-4 col-xl-12">
+  
+                <!-- News & Updates Traffic -->
+                <div class="card">
+                    <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <li class="dropdown-header text-start">
+                        <h6>Open More</h6>
+                        </li>
+                        <li><a class="dropdown-item" href="#">VeriSDev Blog</a></li>
+                    </ul>
+                    </div>
+
+                    <div class="card-body pb-0">
+                    <h5 class="card-title">5 latest posted - Blog</h5>
+
+                    {% for post in posts %}
+                      <div class="news">
+                          <div class="post-item clearfix">
+                          <img src="{% static 'img/blog1.jpg' %}" alt="">
+                          <h4><a href="#">{{ post.title }}</a></h4>
+                          <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                          </div>
+                      </div><!-- End sidebar recent posts-->
+                    {% endfor %}
+                    </div>
+                </div><!-- End News & Updates -->
+  
+              </div><!-- End Middle Card -->
+  
+
+  
+            </div>
+          </div><!-- End Left side columns -->
+  
+          <!-- Right side columns -->
+          <div class="col-lg-4">
+  
+            <!-- Recent Activity -->
+            <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>More</h6>
+                  </li>
+  
+                  <li><a class="dropdown-item" href="#">Details GitHub commit</a></li>
+                </ul>
+              </div>
+  
+              <div class="card-body">
+                <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+  
+                <div class="activity">
+  
+                  {% for top5ActivitiesResult in ghTop5SortedAllActivitiesResult %}
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">{{ top5ActivitiesResult.created_at|convert_timeago }}</div>
+                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                    <div class="activity-content">{{ top5ActivitiesResult.repo.name|remove_GitHubOwnerName }}
+                    </div>
+                  </div><!-- End activity item-->
+                  {% endfor %}
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">56 min</div>
+                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                    <div class="activity-content">
+                      Voluptatem blanditiis blanditiis eveniet
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 hrs</div>
+                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                    <div class="activity-content">
+                      Voluptates corrupti molestias voluptatem
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">1 day</div>
+                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                    <div class="activity-content">
+                      Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 days</div>
+                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                    <div class="activity-content">
+                      Est sit eum reiciendis exercitationem
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">4 weeks</div>
+                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                    <div class="activity-content">
+                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                    </div>
+                  </div><!-- End activity item-->
+  
+                </div>
+  
+              </div>
+            </div><!-- End Recent Activity -->
+  
+          </div><!-- End Right side columns -->
+  
+        </div>
+      </section>
+    
+</main>
+
+{% endblock Content %}

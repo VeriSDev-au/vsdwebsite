@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Content %}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Blog</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'vsd-home' %}">Home</a></li>
+            <li class="breadcrumb-item active">Blog</li>
+        </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <div class="row align-items-top">
+        <div class="col-lg-8">
+            {% for post in posts %}
+            <!-- Card with header and footer -->
+            <div class="card">
+                <div class="card-body">
+                <a href="{% url 'vsd-blog-detail' post.id %}" class="">
+                <h5 class="card-title">{{ post.title }}</h5></a>
+                    {{ post.intro }}
+                </div>
+                <div class="card-footer d-flex mb-1">
+                    <div class="p-1"></div>
+                    <div class="ms-auto p-1">{{ post.created_at|date:"F d, Y" }}</div>
+                </div>
+            </div><!-- End Card with header and footer -->
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Category</h5>
+    
+                    <!-- Blog Category With badges -->
+                    <ul class="list-group">
+                    <a href="#">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Python
+                        <span class="badge bg-primary rounded-pill">7</span>
+                    </li></a>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Django
+                        <span class="badge bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Productivity
+                        <span class="badge bg-primary rounded-pill">9</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Dev Ops
+                        <span class="badge bg-primary rounded-pill">6</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Hiking
+                        <span class="badge bg-primary rounded-pill">2</span>
+                    </li>
+                    </ul><!-- End List Blog Category With badges -->
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+{% endblock Content %}
