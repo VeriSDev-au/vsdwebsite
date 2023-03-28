@@ -1,18 +1,8 @@
-from .base import *
-from decouple import config
+import os
+from vsd_website.settings.base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-DATABASES = {
-    "default": {
-        "ENGINE": config("DEV_DB_ENGINE"),
-        "HOST": config("DEV_DB_IP"),
-        "NAME": config("DEV_DB_NAME"),
-        "USER": config("DEV_DB_USERNAME"),
-        "PASSWORD": config("DEV_DB_PASSWORD"),
-    }
-}
 
 DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
