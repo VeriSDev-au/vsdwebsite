@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    if bool(os.environ.get("VSD_DEBUG")):
+    if bool(os.environ.get("VSD_DEBUG").strip()):
         os.environ.setdefault(
             "DJANGO_SETTINGS_MODULE", "vsd_website.settings.development"
         )

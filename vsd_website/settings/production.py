@@ -6,11 +6,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["verisdev.au", "www.verisdev.au", "web-production-71b7.up.railway.app"]
 
-STATIC_URL = "static/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static/static"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

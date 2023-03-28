@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-if bool(os.environ.get("VSD_DEBUG")):
+if bool(os.environ.get("VSD_DEBUG").strip()):
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vsd_website.settings.development")
 else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vsd_website.settings.production")
