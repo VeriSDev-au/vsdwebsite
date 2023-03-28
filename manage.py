@@ -6,7 +6,15 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vsd_website.settings.development")
+    if os.environ.get("VSD_DEBUG") == "1":
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "vsd_website.settings.development"
+        )
+    else:
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "vsd_website.settings.production"
+        )
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
