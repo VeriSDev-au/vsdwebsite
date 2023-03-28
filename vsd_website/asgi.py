@@ -11,7 +11,7 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-if os.environ.get("VSD_DEBUG"):
+if os.environ.get("VSD_DEBUG") == "1":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vsd_website.settings.development")
 else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vsd_website.settings.production")
