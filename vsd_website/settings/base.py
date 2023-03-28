@@ -26,6 +26,11 @@ SECRET_KEY = os.environ.get("VSD_SECRET_KEY")
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-71b7.up.railway.app",
+    "https://verisdev.au",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
