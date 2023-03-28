@@ -2,7 +2,9 @@ import os
 from vsd_website.settings.base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+ALLOWED_HOSTS = ["verisdev.au", "www.verisdev.au", "web-production-71b7.up.railway.app"]
 
 STATIC_URL = "static/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
