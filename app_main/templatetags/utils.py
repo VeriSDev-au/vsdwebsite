@@ -28,10 +28,26 @@ def convert_timeago(value):
     now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
     return timeago.format(datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ"), now)[
         :-4
-    ]
+    ] #Remove word ago with -4
 
 
 @register.filter
 @stringfilter
-def remove_GitHubOwnerName(value):
+def convert_timeago_color_code(value):
+    result_timeago = convert_timeago(value)
+    if "min" in result_timeago:
+        return "text-danger"
+    elif "hour" in result_timeago:
+        return "text-primary"
+    elif "day" in result_timeago:
+        return "text-info"
+    elif "week" in result_timeago:
+        return "text-warning"
+    else:
+        return "text-success"
+
+
+@register.filter
+@stringfilter
+def remove_gh_owner_name(value):
     return value[12:]
