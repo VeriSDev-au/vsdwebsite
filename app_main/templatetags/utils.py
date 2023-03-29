@@ -25,10 +25,10 @@ def convert_markdown(value):
 @register.filter
 @stringfilter
 def convert_timeago(value):
-    now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
+    now = datetime.datetime.utcnow() + datetime.timedelta(seconds=60 * 3.4)
     return timeago.format(datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ"), now)[
         :-4
-    ] #Remove word ago with -4
+    ].replace("minutes", "mins")
 
 
 @register.filter
