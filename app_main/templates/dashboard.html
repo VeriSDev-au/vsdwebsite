@@ -45,7 +45,7 @@
                 </div>
               </div><!-- End Sales Card -->
   
-              <!-- Revenue Card -->
+              <!-- GitHub Card -->
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card revenue-card">
   
@@ -76,10 +76,10 @@
                   </div>
   
                 </div>
-              </div><!-- End Revenue Card -->
+              </div><!-- End GitHub Card -->
   
               <!-- Middle Card -->
-              <div class="col-xxl-4 col-xl-12">
+              <div class="col-12">
   
                 <!-- News & Updates Traffic -->
                 <div class="card">
@@ -138,7 +138,7 @@
   
                   {% for gh_topx_activities_item in gh_topx_activities_result %}
                   <div class="activity-item d-flex">
-                    <div class="activite-label">{{ gh_topx_activities_item.created_at|convert_timeago }}</div>
+                    <div class="activite-label text-end px-2" style="width: 120px;">{{ gh_topx_activities_item.created_at|convert_timeago }}</div>
                     <i class="bi bi-circle-fill activity-badge {{ gh_topx_activities_item.created_at|convert_timeago_color_code }} align-self-start"></i>
                     <div class="activity-content">{{ gh_topx_activities_item.repo.name|remove_gh_owner_name }}
                     </div>

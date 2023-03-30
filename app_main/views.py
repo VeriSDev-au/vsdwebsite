@@ -3,17 +3,18 @@ import requests
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import HttpResponse
 
 from app_blog.models import BlogPost
 
 
 # Create your views here.
 def home(request):
+    """Render home page to the client"""
     return render(request, "base.html")
 
 
 class HomeDashboard(TemplateView):
+    """Render dashboard as home page to the client"""
 
     # Get the total GitHub Public Repository
     gh_api_allrepo = "https://api.github.com/user/repos"
@@ -63,9 +64,5 @@ class HomeDashboard(TemplateView):
 
 
 def pages_contact(request):
-    return render(request, "pages-contact.html")
-
-
-def about(request):
-    # return render(request, "blog/about.html", {"title": "About"})
-    return HttpResponse("<h1>VSD About</h1>")
+    """Render the contact page to the client"""
+    return render(request, "contact.html")

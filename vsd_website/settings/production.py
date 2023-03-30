@@ -1,3 +1,12 @@
+"""
+Setting detail for production environment
+
+Static files need in the production environment need to be stored
+in the external cloud storage such as Google Cloud Storage or AWS S3.
+Therefore the following code need to be enhance, especially once the 
+DEBUG value we change it to False.
+"""
+
 import os
 from vsd_website.settings.base import *
 

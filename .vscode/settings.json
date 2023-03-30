@@ -1,0 +1,6 @@
+{
+  "python.linting.pylintEnabled": true,
+  "python.linting.pycodestyleEnabled": true,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 79
+}
