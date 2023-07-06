@@ -7,6 +7,9 @@ import datetime
 import timeago
 
 import markdown
+import markdown.extensions.fenced_code
+import markdown.extensions.extra
+import markdown.extensions.codehilite
 from django import template
 from django.template.defaultfilters import stringfilter
 
@@ -27,7 +30,8 @@ def is_active_view(context, *view_names):
 @stringfilter
 def convert_markdown(value):
     """Allow to convert markdown format and render it as HTML to the client"""
-    return markdown.markdown(value, extensions=["markdown.extensions.fenced_code"])
+    return markdown.markdown(value,
+                             extensions=["markdown.extensions.fenced_code", "markdown.extensions.extra", "markdown.extensions.codehilite"])
 
 
 @register.filter
