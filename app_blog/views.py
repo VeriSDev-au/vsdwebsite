@@ -17,7 +17,7 @@ class BlogHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        posts = BlogPost.objects.all()
+        posts = BlogPost.objects.all().order_by("-created_at")
         
         context["catInfos"] = CategoryCount.load_category_count()
         context["posts"] = posts
