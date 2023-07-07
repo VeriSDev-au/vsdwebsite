@@ -2,6 +2,7 @@ from django.db import models
 from app_admin.models import UserProfile
 import uuid
 
+
 # Create your models here.
 class BlogPost(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

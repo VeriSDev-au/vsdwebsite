@@ -14,8 +14,12 @@
     </div><!-- End Page Title -->
 
     <div class="row align-items-top">
+        <h4>{{ title }}</h4>
+
+        <h6>{{ num_results }} results found</h6>
         <div class="col-lg-8">
             {% for post in posts %}
+            
             <!-- Card with header and footer -->
             <div class="card">
                 <div class="card-body">
@@ -35,31 +39,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Category</h5>
-    
+                    
                     <!-- Blog Category With badges -->
-                    <ul class="list-group">
-                    <a href="#">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Python
-                        <span class="badge bg-primary rounded-pill">7</span>
-                    </li></a>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Django
-                        <span class="badge bg-primary rounded-pill">14</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Productivity
-                        <span class="badge bg-primary rounded-pill">9</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Dev Ops
-                        <span class="badge bg-primary rounded-pill">6</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Hiking
-                        <span class="badge bg-primary rounded-pill">2</span>
-                    </li>
-                    </ul><!-- End List Blog Category With badges -->
+                    {% include "blogs/blog_category.html" %}
+                    <!-- End List Blog Category With badges -->
     
                 </div>
             </div>
