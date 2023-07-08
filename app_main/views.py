@@ -63,7 +63,7 @@ class HomeDashboard(TemplateView):
         gh_topx_activities_result = [x for x in gh_api_activities_sorted[0::]]
 
         # Query 5 latest posted blog
-        blog_post_5_last_posts = BlogPost.objects.all().order_by("-created_at")
+        blog_post_5_last_posts = BlogPost.objects.all().order_by("-created_at")[:5]
         
         #[:5:-1]
         sequence = 1
