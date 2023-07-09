@@ -70,7 +70,7 @@ class BlogCategoryView(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        posts = BlogPost.objects.all().filter(category__icontains=category)
+        posts = BlogPost.objects.all().filter(category__icontains=category).order_by("-created_at")
                
         context["catInfos"] = CategoryCount.load_category_count()
         context["num_results"] = posts.count()
