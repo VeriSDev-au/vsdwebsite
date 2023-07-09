@@ -1,20 +1,33 @@
-<div class="col-lg-4">
-    <div class="card">
-        <div class="card-body">
+{% extends "base.html" %}
+{% load static %}
+{% block Content %}
 
-            <h5 class="card-title">Category</h5>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Blog</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'vsd-home' %}">Home</a></li>
+            <li class="breadcrumb-item active">Blog By Category</li>
+        </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
-            <ul class="list-group">
-                            
-            {% for catInfo in catInfos %}
-            <a href="{% url 'vsd-blog-category'%}?f={{ catInfo.blogcategory }}">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ catInfo.blogcategory }}
-                <span class="badge bg-primary rounded-pill">{{ catInfo.totalblogitem }}</span>
-            </li></a>
-            {% endfor %}
-            </ul>
+    <div class="row align-items-top">
+        <h4>{{ title }}</h4>
 
-        </div>
+        <h6>{{ num_results }} results found</h6>
+              
+        <!-- Blog List -->
+        {% include "blogs/parts/blog_list.html" %}
+        <!-- End Blog List -->
+
+        <!-- Blog Category With badges -->
+        {% include "blogs/parts/blog_nav_category.html" %}
+        <!-- End List Blog Category With badges -->
+
     </div>
-</div>
+    
+</main>
+
+{% endblock Content %}
