@@ -59,6 +59,27 @@ class BlogSearchView(TemplateView):
         return context
 
 
+
+class BlogCategoryView(TemplateView):
+    model = BlogPost
+    template_name = "blogs/blog_search.html"
+    context_object_name = "posts"
+
+    def get_context_data(self, *args, **kwargs):
+        category = self.request.GET.get('f')
+
+        context = super().get_context_data(**kwargs)
+
+        posts = BlogPost.objects.all().filter(category__icontains=category)
+               
+        context["catInfos"] = CategoryCount.load_category_count()
+        context["searched"] = self.request.GET.get('searched')
+        context["num_results"] = posts.count()
+        context["posts"] = posts
+        context["title"] = f"Search Result for \'{self.request.GET.get('searched')}\'"
+        return context
+
+
 class BlogPostDetailView(DetailView):
     template_name = "blogs/blog_detail.html"
 

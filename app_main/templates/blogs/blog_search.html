@@ -17,36 +17,15 @@
         <h4>{{ title }}</h4>
 
         <h6>{{ num_results }} results found</h6>
-        <div class="col-lg-8">
-            {% for post in posts %}
-            
-            <!-- Card with header and footer -->
-            <div class="card">
-                <div class="card-body">
-                <a href="{% url 'vsd-blog-detail' post.id %}" class="">
-                <h5 class="card-title">{{ post.title }}</h5></a>
-                    {{ post.intro }}
-                </div>
-                <div class="card-footer d-flex mb-1">
-                    <div class="p-1"></div>
-                    <div class="ms-auto p-1">{{ post.created_at|date:"F d, Y" }}</div>
-                </div>
-            </div><!-- End Card with header and footer -->
-            {% endfor %}
-        </div>
+              
+        <!-- Blog List -->
+        {% include "blogs/blog_list.html" %}
+        <!-- End Blog List -->
 
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Category</h5>
-                    
-                    <!-- Blog Category With badges -->
-                    {% include "blogs/blog_category.html" %}
-                    <!-- End List Blog Category With badges -->
-    
-                </div>
-            </div>
-        </div>
+        <!-- Blog Category With badges -->
+        {% include "blogs/blog_category.html" %}
+        <!-- End List Blog Category With badges -->
+
     </div>
     
 </main>
