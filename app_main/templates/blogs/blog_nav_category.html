@@ -7,7 +7,7 @@
             <ul class="list-group">
                             
             {% for catInfo in catInfos %}
-            <a href="{% url 'vsd-blog-category'%}?f={{ catInfo.blogcategory }}">
+            <a href="{% url 'vsd-blog-category'%}?searched={{ catInfo.blogcategory }}">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ catInfo.blogcategory }}
                 <span class="badge bg-primary rounded-pill">{{ catInfo.totalblogitem }}</span>

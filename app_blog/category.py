@@ -21,14 +21,14 @@ class CategoryCount():
                     FROM app_blog_blogpost As Blog
                         LEFT OUTER JOIN 
                         (SELECT DISTINCT
-                        (regexp_split_to_table(category, ','))
+                        Trim((regexp_split_to_table(category, ',')))
                             As blogCategory
                 FROM app_blog_blogpost 
                 ORDER BY blogCategory ASC) As Cat
                     ON Blog.category LIKE 
                         concat('%', Cat.blogCategory,'%')
-                    GROUP BY Cat.blogCategory
-                        ORDER BY Cat.blogCategory ASC; 
+                    GROUP BY Trim(Cat.blogCategory)
+                        ORDER BY Trim(Cat.blogCategory) ASC; 
             """)
             
             fields = [field_name[0] for field_name in cursor.description]

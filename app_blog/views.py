@@ -1,7 +1,7 @@
 from .models import BlogPost
 
 from django.shortcuts import render
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import QuerySet
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
@@ -10,24 +10,27 @@ from .category import CategoryCount
 # Create your views here.
 
 
-class BlogHomeView(TemplateView):
+class BlogHomeView(ListView):
     model = BlogPost
     template_name = "blogs/blog_home.html"
     context_object_name = "posts"
+    paginate_by = 4
 
+    def get_queryset(self):
+        posts = BlogPost.objects.all().order_by("-created_at")
+        return posts
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        posts = BlogPost.objects.all().order_by("-created_at")
-        
         context["catInfos"] = CategoryCount.load_category_count()
-        context["posts"] = posts
         return context
 
 
-class BlogSearchView(TemplateView):
+class BlogSearchView(ListView):
     model = BlogPost
     template_name = "blogs/blog_search.html"
     context_object_name = "posts"
+    paginate_by = 4
 
     def get_queryset(self):
         searched = self.request.GET.get("searched")
@@ -44,37 +47,36 @@ class BlogSearchView(TemplateView):
             .filter(search=search_query)
             .order_by("-rank")
         )
-        
 
-    def get_context_data(self, *args, **kwargs):
+        
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        posts = self.get_queryset()
-               
         context["catInfos"] = CategoryCount.load_category_count()
         context["searched"] = self.request.GET.get('searched')
-        context["num_results"] = posts.count()
-        context["posts"] = posts
+        context["num_results"] = self.get_queryset().count()
         context["title"] = f"Search Result for \'{self.request.GET.get('searched')}\'"
         return context
 
 
-
-class BlogCategoryView(TemplateView):
+class BlogCategoryView(ListView):
     model = BlogPost
     template_name = "blogs/blog_category.html"
     context_object_name = "posts"
+    paginate_by = 4 
 
-    def get_context_data(self, *args, **kwargs):
-        category = self.request.GET.get('f')
+    def get_queryset(self):
+        category = self.request.GET.get('searched')
+        posts = BlogPost.objects.all().filter(category__icontains=category).order_by("-created_at")
+        return posts
 
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        posts = BlogPost.objects.all().filter(category__icontains=category).order_by("-created_at")
-               
+        category = self.request.GET.get('searched')
+
         context["catInfos"] = CategoryCount.load_category_count()
-        context["num_results"] = posts.count()
-        context["posts"] = posts
+        context["num_results"] = self.get_queryset().count()
         context["title"] = f"List of all blogs item with category: {category}"
                             
         return context
@@ -84,4 +86,3 @@ class BlogPostDetailView(DetailView):
     template_name = "blogs/blog_detail.html"
 
     model = BlogPost
-    
