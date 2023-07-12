@@ -2,6 +2,7 @@ asgiref==3.6.0
 astroid==2.14.2
 autopep8==1.6.0
 black==22.6.0
+bleach==6.0.0
 certifi==2022.12.7
 charset-normalizer==3.1.0
 click==8.0.4
@@ -11,6 +12,7 @@ dill==0.3.6
 Django==4.1.7
 django-crispy-forms==2.0
 django-extensions==3.2.1
+django-markdownify==0.9.3
 django-widget-tweaks==1.4.12
 flit_core==3.8.0
 gunicorn==20.1.0
@@ -31,14 +33,17 @@ pylint-django==2.5.3
 pylint-plugin-utils==0.7
 requests==2.28.2
 setuptools==65.6.3
+six==1.16.0
 sqlparse==0.4.3
 timeago==1.0.16
+tinycss2==1.1.1
 toml==0.10.2
 tomli==2.0.1
 tomlkit==0.11.1
 typing_extensions==4.4.0
 tzdata==2022.7
 urllib3==1.26.15
+webencodings==0.5.1
 wheel==0.38.4
 whitenoise==6.4.0
 wincertstore==0.2

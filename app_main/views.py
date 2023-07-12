@@ -84,3 +84,41 @@ class HomeDashboard(TemplateView):
 def pages_contact(request):
     """Render the contact page to the client"""
     return render(request, "contact.html")
+
+def pages_blog2(request):
+
+    posts2 = [
+        {
+            "author": "CoreyMS",
+            "title": "Blog Post 1",
+            "content": """
+
+# title here
+## sub title
+
+here I write
+
+- hallo satu
+- hello dua
+
+```python
+def cobaan(x,y)
+    return x * ranint(1,y)
+```
+
+First post content pertama
+            """,
+            "date_posted": "August 27, 2018",
+        },
+        {
+            "author": "Jane Doe",
+            "title": "Blog Post 2",
+            "content": "Second post content kedua",
+            "date_posted": "August 28, 2018",
+        },
+    ]
+
+    context = {"posts": posts2}
+
+    """Render the contact page to the client"""
+    return render(request, "blogs2/home.html", context)

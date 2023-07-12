@@ -31,7 +31,7 @@ def is_active_view(context, *view_names):
 def convert_markdown(value):
     """Allow to convert markdown format and render it as HTML to the client"""
     return markdown.markdown(value,
-                             extensions=["markdown.extensions.fenced_code", "markdown.extensions.extra", "markdown.extensions.codehilite"])
+                             extensions=['fenced_code', 'codehilite'])
 
 
 @register.filter
