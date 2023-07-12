@@ -1,9 +1,11 @@
 from .models import BlogPost
+from django.conf import settings
 
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import QuerySet
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+
 
 from .category import CategoryCount
 
@@ -14,7 +16,7 @@ class BlogHomeView(ListView):
     model = BlogPost
     template_name = "blogs/blog_home.html"
     context_object_name = "posts"
-    paginate_by = 4
+    paginate_by = settings.MAX_DISPLAY_PAGINATION
 
     def get_queryset(self):
         posts = BlogPost.objects.all().order_by("-created_at")
@@ -30,7 +32,7 @@ class BlogSearchView(ListView):
     model = BlogPost
     template_name = "blogs/blog_search.html"
     context_object_name = "posts"
-    paginate_by = 4
+    paginate_by = settings.MAX_DISPLAY_PAGINATION
 
     def get_queryset(self):
         searched = self.request.GET.get("searched")
@@ -63,7 +65,7 @@ class BlogCategoryView(ListView):
     model = BlogPost
     template_name = "blogs/blog_category.html"
     context_object_name = "posts"
-    paginate_by = 4 
+    paginate_by = settings.MAX_DISPLAY_PAGINATION
 
     def get_queryset(self):
         category = self.request.GET.get('searched')

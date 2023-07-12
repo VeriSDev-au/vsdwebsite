@@ -166,6 +166,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_REDIRECT_URL = "vsd-home"
 LOGOUT_REDIRECT_URL = "vsd-home"
 
+from django.conf import settings
+
+MAX_DISPLAY_PAGINATION = 10
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
