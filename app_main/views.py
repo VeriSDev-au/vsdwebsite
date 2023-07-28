@@ -88,7 +88,23 @@ def pages_contact(request):
     """Render the contact page to the client"""
     return render(request, "contact.html")
 
-def pages_ext_url_DP_203(request):
-    """Render the contact page to the client"""
+
+def pages_ext_url_DP_300_Azure_DBA(request):
+    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/6B10ED6BE0F9A91F?sharingId=9470BEBEF2827B7E")
+
+def pages_ext_url_PL_300_PowerBI_Data_Analyst(request):
+    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/E978711846AF3830?sharingId=9470BEBEF2827B7E")
+
+def pages_ext_url_DP_203_Azure_Data_Eng(request):
     return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/8B4394A353A92C49?sharingId=9470BEBEF2827B7E")
 
+
+def pages_ext_url_PCAP_Python(request):
+    return HttpResponseRedirect("https://verify.openedg.org/?id=LM8r.PO28.6NXD")
+
+def pages_ext_url_PCEP_Python(request):
+    return HttpResponseRedirect("https://verify.openedg.org/?id=c2uq.1GR8.yWeO")
+
+
+def pages_ext_url_AZ_900_Azure_Fundamental(request):
+    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/70B15DA2690D83F5?sharingId=9470BEBEF2827B7E")
