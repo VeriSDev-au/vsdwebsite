@@ -3,8 +3,11 @@ import requests
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.http import HttpResponseRedirect
 
 from app_blog.models import BlogPost
+
+
 
 
 # # Create your views here.
@@ -84,3 +87,8 @@ class HomeDashboard(TemplateView):
 def pages_contact(request):
     """Render the contact page to the client"""
     return render(request, "contact.html")
+
+def pages_ext_url_DP_203(request):
+    """Render the contact page to the client"""
+    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/8B4394A353A92C49?sharingId=9470BEBEF2827B7E")
+
