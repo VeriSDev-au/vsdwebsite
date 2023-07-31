@@ -3,8 +3,8 @@ from . import views as main_view
 
 urlpatterns = [
     path("", main_view.HomeDashboard.as_view(), name="vsd-home"),
-    path("contact/", main_view.pages_contact, name="vsd-contact"),
-    
+    path("contact/", main_view.ContactView.as_view(), name="vsd-contact"),
+    path("contact-success/", main_view.pages_contact_success, name="vsd-contact-success"),
 
     # Certificate URL Shortcut    
     path("cert-dp-300-azure-dba/", main_view.pages_ext_url_DP_300_Azure_DBA, name="vsd-cert-dp-300"),

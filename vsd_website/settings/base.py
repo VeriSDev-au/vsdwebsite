@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
     "markdownify",
+
 ]
 
 MIDDLEWARE = [
@@ -180,3 +181,11 @@ DATABASES = {
         "PORT": os.environ.get("VSD_DB_PORT"),
     }
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("VSD_MAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("VSD_MAIL_PASSWORD")
+EMAIL_RECIPIENT_ADDRESS = os.environ.get("VSD_MAIL_RECIPIENT_ADDRESS")

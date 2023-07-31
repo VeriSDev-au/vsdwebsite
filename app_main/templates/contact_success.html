@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Content %}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Contact</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Pages</li>
+            <li class="breadcrumb-item">Contact</li>
+            <li class="breadcrumb-item active">Message sent</li>
+        </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card align-items-center">
+                <div class="card-body">
+                    <h5 class="card-title">Message Sent Successfully!</h5>
+                    <p>Thank you, for reaching out to us.</p>
+                    <p>We have received your message and will respond shortly.</p>
+                    <p>Have a great day!</p>
+
+                    <div class="d-grid gap-2 col-2 mx-auto">
+                        <a class="btn btn-primary w-200" href="../" type="submit">OK</a>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</main>
+
+{% endblock Content %}

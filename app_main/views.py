@@ -2,13 +2,15 @@ import os
 import requests
 
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from django.http import HttpResponseRedirect
 
 from app_blog.models import BlogPost
 
+from .urlshortcut import UrlShortcut
 
-
+from .forms import ContactForm
+from django.urls import reverse_lazy
 
 # # Create your views here.
 # def home(request):
@@ -83,28 +85,37 @@ class HomeDashboard(TemplateView):
         return extra_context
 
 
-
-def pages_contact(request):
+#def pages_contact(request):
+class ContactView(FormView):
     """Render the contact page to the client"""
-    return render(request, "contact.html")
+    template_name = "contact.html"
+    
+    form_class = ContactForm
+    success_url = reverse_lazy('vsd-contact-success')
 
+    def form_valid(self, form):
+        # Calls the custom send method
+        form.send()
+        return super().form_valid(form)
+
+def pages_contact_success(request):
+    """Render the contact page to the client"""
+    return render(request, "contact_success.html")
 
 def pages_ext_url_DP_300_Azure_DBA(request):
-    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/6B10ED6BE0F9A91F?sharingId=9470BEBEF2827B7E")
+    return HttpResponseRedirect(UrlShortcut.url_Cert_DP_300_Azure_DBA)
 
 def pages_ext_url_PL_300_PowerBI_Data_Analyst(request):
-    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/E978711846AF3830?sharingId=9470BEBEF2827B7E")
+    return HttpResponseRedirect(UrlShortcut.url_Cert_PL_300_PowerBI_Data_Analyst)
 
 def pages_ext_url_DP_203_Azure_Data_Eng(request):
-    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/8B4394A353A92C49?sharingId=9470BEBEF2827B7E")
-
+    return HttpResponseRedirect(UrlShortcut.url_Cert_DP_203_Azure_Data_Eng)
 
 def pages_ext_url_PCAP_Python(request):
-    return HttpResponseRedirect("https://verify.openedg.org/?id=LM8r.PO28.6NXD")
+    return HttpResponseRedirect(UrlShortcut.url_Cert_PCAP_Python)
 
 def pages_ext_url_PCEP_Python(request):
-    return HttpResponseRedirect("https://verify.openedg.org/?id=c2uq.1GR8.yWeO")
-
+    return HttpResponseRedirect(UrlShortcut.url_Cert_PCEP_Python)
 
 def pages_ext_url_AZ_900_Azure_Fundamental(request):
-    return HttpResponseRedirect("https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/70B15DA2690D83F5?sharingId=9470BEBEF2827B7E")
+    return HttpResponseRedirect(UrlShortcut.url_Cert_AZ_900_Azure_Fundamental)
