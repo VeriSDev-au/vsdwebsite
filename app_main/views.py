@@ -119,3 +119,6 @@ def pages_ext_url_PCEP_Python(request):
 
 def pages_ext_url_AZ_900_Azure_Fundamental(request):
     return HttpResponseRedirect(UrlShortcut.url_Cert_AZ_900_Azure_Fundamental)
+
+def pages_ext_url_DP_500_Azure_Enterprise_Data_Analyst(request):
+    return HttpResponseRedirect(UrlShortcut.url_Cert_DP_500_Azure_Enterprise_Data_Analyst)

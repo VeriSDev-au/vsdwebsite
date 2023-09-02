@@ -17,6 +17,8 @@ urlpatterns = [
 
     path("cert-pcep-python/", main_view.pages_ext_url_PCEP_Python, name="vsd-cert-pcep-python"),
 
-    path("cert-az-900-azure-fundamental/", main_view.pages_ext_url_AZ_900_Azure_Fundamental, name="vsd-cert-az-900")
+    path("cert-az-900-azure-fundamental/", main_view.pages_ext_url_AZ_900_Azure_Fundamental, name="vsd-cert-az-900"),
+
+    path("cert-dp-500-azure-enterprise-data-analyst/", main_view.pages_ext_url_DP_500_Azure_Enterprise_Data_Analyst, name="vsd-cert-dp-500")
     # End Certificate URL Shortcut    
 ]

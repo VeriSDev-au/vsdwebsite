@@ -10,3 +10,5 @@ class UrlShortcut():
     url_Cert_PCEP_Python = "https://verify.openedg.org/?id=c2uq.1GR8.yWeO"
 
     url_Cert_AZ_900_Azure_Fundamental = "https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/70B15DA2690D83F5?sharingId=9470BEBEF2827B7E"
+
+    url_Cert_DP_500_Azure_Enterprise_Data_Analyst = "https://learn.microsoft.com/api/credentials/share/en-us/VeriSukawiratmo-9079/70A01C4618F5095C?sharingId=9470BEBEF2827B7E" 
