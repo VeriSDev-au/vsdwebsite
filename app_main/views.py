@@ -65,7 +65,7 @@ class HomeDashboard(TemplateView):
             key=lambda city: city["created_at"],
             reverse=True
         )
-        gh_topx_activities_result = [x for x in gh_api_activities_sorted[0::]]
+        gh_topx_activities_result = [x for x in gh_api_activities_sorted[0:10:]]
 
         # Query 5 latest posted blog
         blog_post_5_last_posts = BlogPost.objects.all().order_by("-created_at")[:5]
