@@ -84,7 +84,6 @@ class HomeDashboard(TemplateView):
         }
         return extra_context
 
-
 #def pages_contact(request):
 class ContactView(FormView):
     """Render the contact page to the client"""
