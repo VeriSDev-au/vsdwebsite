@@ -23,12 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("VSD_SECRET_KEY")
 
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "web-production-71b7.up.railway.app",
+    "verisdev.au",
+    "www.verisdev.au",
+]
+
+
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-71b7.up.railway.app",
     "https://verisdev.au",
     "https://www.verisdev.au",
 ]
-
 # Application definition
 
 INSTALLED_APPS = [
