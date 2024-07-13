@@ -48,6 +48,7 @@ class HomeDashboard(TemplateView):
             )
         )
         # End Get the total GitHub Public Repository
+        # VS Update 20240714 Refresh GitHub Token.
 
         # Get the total GitHub commit
         gh_api_activities = "https://api.github.com/users/VeriSDev-au/events"
