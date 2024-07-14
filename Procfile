@@ -1,1 +1,1 @@
-web: gunicorn vsd_website.wsgi --log-file -
+web: python manage.py migrate && gunicorn vsd_website.wsgi
