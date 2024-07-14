@@ -156,7 +156,6 @@ PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardi
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 # Define the model of user authorisation to override the default model which is User
 AUTH_USER_MODEL = "app_admin.UserProfile"
 
