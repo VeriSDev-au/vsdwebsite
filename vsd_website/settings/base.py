@@ -28,14 +28,14 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "web-production-71b7.up.railway.app",
     "verisdev.au",
-    "www.verisdev.au",
+    "www.verisdev.au"
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-71b7.up.railway.app",
     "https://verisdev.au",
-    "https://www.verisdev.au",
+    "https://www.verisdev.au"
 ]
 # Application definition
 
