@@ -5,6 +5,8 @@ Static files need in the production environment need to be stored
 in the external cloud storage such as Google Cloud Storage or AWS S3.
 Therefore the following code need to be enhance, especially once the 
 DEBUG value we change it to False.
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "verisdev.au", "www.verisdev.au", "web-production-71b7.up.railway.app"]
 """
 
 import os
@@ -13,7 +15,7 @@ from vsd_website.settings.base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "verisdev.au", "www.verisdev.au", "web-production-71b7.up.railway.app"]
+ALLOWED_HOSTS = ["*"]
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
