@@ -1,1 +1,1 @@
-web: gunicorn vsd_website.wsgi:application --timeout 300
+waitress-serve --listen=*:8000 vsd_website.wsgi:application
