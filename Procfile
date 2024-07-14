@@ -1,1 +1,1 @@
-web: gunicorn vsd_website.wsgi
+web: gunicorn 'vsd_website.wsgi'
